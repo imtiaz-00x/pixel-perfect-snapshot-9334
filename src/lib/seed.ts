@@ -1,0 +1,180 @@
+import type { Application, Task } from "./types";
+
+const DAY = 24 * 60 * 60 * 1000;
+const inDays = (n: number) => new Date(Date.now() + n * DAY).toISOString();
+
+/**
+ * Placeholder seed data for Phase 1. These tasks and applications are sample
+ * content so the app is explorable before the backend integration replaces
+ * the local store. No testimonials, ratings or platform-wide counts are used.
+ */
+export const SEED_TASKS: Task[] = [
+  {
+    id: "task-1",
+    title: "Edit a 60-second product teaser video",
+    description:
+      "We have roughly 20 minutes of raw footage from a product shoot and need a punchy 60-second teaser for our launch. You will pick the best takes, add motion text for key features, colour-grade for consistency and mix a licensed background track (we will provide the licence). References for pacing and tone will be shared once we connect.",
+    category: "video",
+    taskType: "one-time",
+    budgetType: "fixed",
+    budgetMin: 4000,
+    budgetMax: 8000,
+    deadline: inDays(12),
+    deliverables: ["60-second teaser (16:9)", "9:16 cut for reels/stories", "SRT caption file"],
+    skills: ["Premiere Pro or DaVinci Resolve", "Motion text", "Colour grading", "Sound mixing"],
+    clientId: "demo-client",
+    clientName: "Aarav Mehta",
+    postedAt: inDays(-2),
+    status: "open",
+  },
+  {
+    id: "task-2",
+    title: "Instagram post pack for a cafe rebrand",
+    description:
+      "A neighbourhood cafe is rebranding and needs a cohesive set of Instagram posts. We will share the new logo, palette and photos of the space. You will design templates the owner can reuse, keeping the layout system simple enough for staff to update weekly.",
+    category: "design",
+    taskType: "one-time",
+    budgetType: "fixed",
+    budgetMin: 3000,
+    budgetMax: 6000,
+    deadline: inDays(9),
+    deliverables: ["8 post designs (1080x1080)", "2 story templates", "Editable source files"],
+    skills: ["Figma or Photoshop", "Typography", "Brand layout systems"],
+    clientId: "demo-client",
+    clientName: "Aarav Mehta",
+    postedAt: inDays(-1),
+    status: "open",
+  },
+  {
+    id: "task-3",
+    title: "Fix checkout bug on React storefront",
+    description:
+      "Our storefront built with React and a Node API intermittently drops the discount code at checkout when users edit their cart after applying it. We can reproduce it on both mobile and desktop. You will diagnose the state flow, fix the bug and add a regression test where practical.",
+    category: "web",
+    taskType: "one-time",
+    budgetType: "fixed",
+    budgetMin: 5000,
+    budgetMax: 10000,
+    deadline: inDays(7),
+    deliverables: ["Fixed checkout flow", "Short written explanation of the root cause", "Regression check steps"],
+    skills: ["React", "State management", "REST APIs", "Debugging"],
+    clientId: "demo-client",
+    clientName: "Aarav Mehta",
+    postedAt: inDays(-4),
+    status: "open",
+  },
+  {
+    id: "task-4",
+    title: "Clean and format a 500-row sales dataset",
+    description:
+      "We exported a sales dataset with duplicated rows, inconsistent city names and mixed date formats. It needs to be cleaned and formatted into a standard structure with a separate sheet documenting every change you made. A template of the target format will be provided.",
+    category: "data",
+    taskType: "one-time",
+    budgetType: "fixed",
+    budgetMin: 1500,
+    budgetMax: 3000,
+    deadline: inDays(5),
+    deliverables: ["Cleaned dataset (Excel)", "Change log sheet", "Summary of issues found"],
+    skills: ["Excel", "Data cleaning", "Attention to detail"],
+    clientId: "demo-client",
+    clientName: "Aarav Mehta",
+    postedAt: inDays(-3),
+    status: "open",
+  },
+  {
+    id: "task-5",
+    title: "Set up a search ads campaign for a tutoring centre",
+    description:
+      "A small tutoring centre wants to start appearing in search results for local queries. You will research keywords, set up the campaign structure in Google Ads, write the ad copy and set up conversion tracking for enquiry calls. We already have an ads account; you will get temporary manager access.",
+    category: "marketing",
+    taskType: "ongoing",
+    budgetType: "hourly",
+    budgetMin: 400,
+    budgetMax: 700,
+    deadline: inDays(14),
+    deliverables: ["Campaign with keyword groups", "Ad copy for 2 ad groups", "Conversion tracking setup", "1-page handover note"],
+    skills: ["Google Ads", "Keyword research", "Ad copywriting", "Local SEO basics"],
+    clientId: "demo-client",
+    clientName: "Aarav Mehta",
+    postedAt: inDays(-1),
+    status: "open",
+  },
+  {
+    id: "task-6",
+    title: "Same-day document delivery across South Kolkata",
+    description:
+      "Signed contracts need to reach three offices in South Kolkata today or tomorrow morning. Each envelope needs a delivery confirmation (photo of the receiving desk or a signature). You will be given the pickup address and three drop locations with contact names.",
+    category: "local",
+    taskType: "urgent",
+    budgetType: "fixed",
+    budgetMin: 300,
+    budgetMax: 800,
+    deadline: inDays(2),
+    deliverables: ["3 confirmed deliveries", "Proof photo per delivery"],
+    skills: ["Reliability", "Own transport", "Local area knowledge"],
+    clientId: "demo-client",
+    clientName: "Aarav Mehta",
+    postedAt: inDays(0),
+    status: "open",
+  },
+  {
+    id: "task-7",
+    title: "Packaging label redesign for a spice brand",
+    description:
+      "A family spice brand wants its packaging refreshed without losing recognition. Current labels look dated and cluttered. You will modernise the layout, improve ingredient hierarchy and prepare print-ready files for three product sizes. Existing brand colours stay.",
+    category: "design",
+    taskType: "one-time",
+    budgetType: "fixed",
+    budgetMin: 8000,
+    budgetMax: 15000,
+    deadline: inDays(21),
+    deliverables: ["Redesigned label for 3 sizes", "Print-ready CMYK files", "2 revision rounds"],
+    skills: ["Illustrator", "Packaging design", "Print production"],
+    clientId: "demo-client",
+    clientName: "Aarav Mehta",
+    postedAt: inDays(-5),
+    status: "open",
+  },
+];
+
+export const SEED_APPLICATIONS: Application[] = [
+  {
+    id: "app-1",
+    taskId: "task-3",
+    freelancerId: "seed-freelancer-1",
+    freelancerName: "Priya Sharma",
+    coverLetter:
+      "I have worked on three storefronts with a similar cart state flow. The discount being dropped when the cart mutates usually points to the coupon being validated against a stale cart snapshot — I would start there and confirm with a reproduction on your staging build.",
+    proposedPrice: 7000,
+    deliveryDays: 4,
+    skills: ["React", "TypeScript", "State management"],
+    status: "pending",
+    createdAt: inDays(-3),
+  },
+  {
+    id: "app-2",
+    taskId: "task-3",
+    freelancerId: "seed-freelancer-2",
+    freelancerName: "Rohan Das",
+    coverLetter:
+      "Checkout state bugs are my daily work. I would trace the cart reducer first, fix the invalidation, and hand over a short write-up so your team can prevent the same class of bug. Available to start immediately.",
+    proposedPrice: 6000,
+    deliveryDays: 5,
+    skills: ["React", "REST APIs", "Debugging"],
+    status: "pending",
+    createdAt: inDays(-2),
+  },
+  {
+    id: "app-3",
+    taskId: "task-1",
+    freelancerId: "seed-freelancer-3",
+    freelancerName: "Ishita Roy",
+    coverLetter:
+      "I edit launch teasers regularly and can deliver both the 16:9 and 9:16 cuts from the same session so the pacing stays consistent. Happy to do a short sample cut of your first minute of footage before you commit.",
+    proposedPrice: 6500,
+    deliveryDays: 6,
+    skills: ["DaVinci Resolve", "Motion text", "Colour grading"],
+    status: "pending",
+    createdAt: inDays(-1),
+  },
+];
