@@ -1,5 +1,13 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight } from "lucide-react";
+import {
+  ArrowRight,
+  Briefcase,
+  CircleUserRound,
+  HelpCircle,
+  LayoutDashboard,
+  PlusCircle,
+  Search,
+} from "lucide-react";
 import type { ReactNode } from "react";
 import { useStore } from "@/lib/store";
 
@@ -27,31 +35,6 @@ const NAV = {
     { to: "/support", label: "Support" },
   ],
 } as const;
-
-function MobileNav() {
-  const { user } = useStore();
-  const items = user
-    ? user.role === "client"
-      ? [
-          { to: "/client", label: "Tasks", icon: "clipboard" },
-          { to: "/tasks/new", label: "Post", icon: "plus" },
-          { to: "/tasks", label: "Browse", icon: "search" },
-          { to: "/profile", label: "Profile", icon: "user" },
-        ]
-      : [
-          { to: "/tasks", label: "Browse", icon: "search" },
-          { to: "/profile", label: "Profile", icon: "user" },
-          { to: "/support", label: "Support", icon: "help" },
-        ]
-    : [
-        { to: "/tasks", label: "Browse", icon: "search" },
-        { to: "/login", label: "Sign in", icon: "user" },
-        { to: "/signup", label: "Join", icon: "plus" },
-      ];
-  return null; // replaced below by concrete icons component
-}
-
-import { Briefcase, CircleUserRound, HelpCircle, LayoutDashboard, PlusCircle, Search } from "lucide-react";
 
 function BottomTab({ to, label, icon }: { to: string; label: string; icon: ReactNode }) {
   return (
