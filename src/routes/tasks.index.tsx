@@ -7,7 +7,7 @@ import { TaskCard } from "@/components/task-card";
 import { useStore } from "@/lib/store";
 import { CATEGORIES, categoryLabel } from "@/lib/types";
 
-export const Route = createFileRoute("/tasks")({
+export const Route = createFileRoute("/tasks/")({
   validateSearch: (search: Record<string, unknown>) => ({
     category: typeof search.category === "string" ? search.category : undefined,
   }),
