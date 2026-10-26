@@ -10,15 +10,26 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ClientRouteImport } from './routes/client'
 import { Route as LoginRouteImport } from './routes/login'
+import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as ReportRouteImport } from './routes/report'
 import { Route as SignupRouteImport } from './routes/signup'
+import { Route as SupportRouteImport } from './routes/support'
 import { Route as TasksIndexRouteImport } from './routes/tasks.index'
 import { Route as TasksTaskIdRouteImport } from './routes/tasks.$taskId'
 import { Route as TasksNewRouteImport } from './routes/tasks.new'
+import { Route as TasksTaskIdApplicantsRouteImport } from './routes/tasks.$taskId_.applicants'
+import { Route as TasksTaskIdApplyRouteImport } from './routes/tasks.$taskId_.apply'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClientRoute = ClientRouteImport.update({
+  id: '/client',
+  path: '/client',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginRoute = LoginRouteImport.update({
@@ -26,9 +37,24 @@ const LoginRoute = LoginRouteImport.update({
   path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportRoute = ReportRouteImport.update({
+  id: '/report',
+  path: '/report',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SignupRoute = SignupRouteImport.update({
   id: '/signup',
   path: '/signup',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportRoute = SupportRouteImport.update({
+  id: '/support',
+  path: '/support',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TasksIndexRoute = TasksIndexRouteImport.update({
@@ -46,55 +72,118 @@ const TasksNewRoute = TasksNewRouteImport.update({
   path: '/tasks/new',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TasksTaskIdApplicantsRoute = TasksTaskIdApplicantsRouteImport.update({
+  id: '/tasks/$taskId_/applicants',
+  path: '/tasks/$taskId/applicants',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TasksTaskIdApplyRoute = TasksTaskIdApplyRouteImport.update({
+  id: '/tasks/$taskId_/apply',
+  path: '/tasks/$taskId/apply',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/client': typeof ClientRoute
   '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/report': typeof ReportRoute
   '/signup': typeof SignupRoute
+  '/support': typeof SupportRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/tasks/new': typeof TasksNewRoute
   '/tasks/': typeof TasksIndexRoute
+  '/tasks/$taskId/applicants': typeof TasksTaskIdApplicantsRoute
+  '/tasks/$taskId/apply': typeof TasksTaskIdApplyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/client': typeof ClientRoute
   '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/report': typeof ReportRoute
   '/signup': typeof SignupRoute
+  '/support': typeof SupportRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/tasks/new': typeof TasksNewRoute
   '/tasks': typeof TasksIndexRoute
+  '/tasks/$taskId/applicants': typeof TasksTaskIdApplicantsRoute
+  '/tasks/$taskId/apply': typeof TasksTaskIdApplyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/client': typeof ClientRoute
   '/login': typeof LoginRoute
+  '/profile': typeof ProfileRoute
+  '/report': typeof ReportRoute
   '/signup': typeof SignupRoute
+  '/support': typeof SupportRoute
   '/tasks/$taskId': typeof TasksTaskIdRoute
   '/tasks/new': typeof TasksNewRoute
   '/tasks/': typeof TasksIndexRoute
+  '/tasks/$taskId_/applicants': typeof TasksTaskIdApplicantsRoute
+  '/tasks/$taskId_/apply': typeof TasksTaskIdApplyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/login' | '/signup' | '/tasks/$taskId' | '/tasks/new' | '/tasks/'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/login' | '/signup' | '/tasks/$taskId' | '/tasks/new' | '/tasks'
-  id:
-    | '__root__'
     | '/'
+    | '/client'
     | '/login'
+    | '/profile'
+    | '/report'
     | '/signup'
+    | '/support'
     | '/tasks/$taskId'
     | '/tasks/new'
     | '/tasks/'
+    | '/tasks/$taskId/applicants'
+    | '/tasks/$taskId/apply'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/client'
+    | '/login'
+    | '/profile'
+    | '/report'
+    | '/signup'
+    | '/support'
+    | '/tasks/$taskId'
+    | '/tasks/new'
+    | '/tasks'
+    | '/tasks/$taskId/applicants'
+    | '/tasks/$taskId/apply'
+  id:
+    | '__root__'
+    | '/'
+    | '/client'
+    | '/login'
+    | '/profile'
+    | '/report'
+    | '/signup'
+    | '/support'
+    | '/tasks/$taskId'
+    | '/tasks/new'
+    | '/tasks/'
+    | '/tasks/$taskId_/applicants'
+    | '/tasks/$taskId_/apply'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ClientRoute: typeof ClientRoute
   LoginRoute: typeof LoginRoute
+  ProfileRoute: typeof ProfileRoute
+  ReportRoute: typeof ReportRoute
   SignupRoute: typeof SignupRoute
+  SupportRoute: typeof SupportRoute
   TasksTaskIdRoute: typeof TasksTaskIdRoute
   TasksNewRoute: typeof TasksNewRoute
   TasksIndexRoute: typeof TasksIndexRoute
+  TasksTaskIdApplicantsRoute: typeof TasksTaskIdApplicantsRoute
+  TasksTaskIdApplyRoute: typeof TasksTaskIdApplyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -106,6 +195,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/client': {
+      id: '/client'
+      path: '/client'
+      fullPath: '/client'
+      preLoaderRoute: typeof ClientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -113,11 +209,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/report': {
+      id: '/report'
+      path: '/report'
+      fullPath: '/report'
+      preLoaderRoute: typeof ReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signup': {
       id: '/signup'
       path: '/signup'
       fullPath: '/signup'
       preLoaderRoute: typeof SignupRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support': {
+      id: '/support'
+      path: '/support'
+      fullPath: '/support'
+      preLoaderRoute: typeof SupportRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tasks/': {
@@ -141,16 +258,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TasksNewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/tasks/$taskId_/applicants': {
+      id: '/tasks/$taskId_/applicants'
+      path: '/tasks/$taskId/applicants'
+      fullPath: '/tasks/$taskId/applicants'
+      preLoaderRoute: typeof TasksTaskIdApplicantsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tasks/$taskId_/apply': {
+      id: '/tasks/$taskId_/apply'
+      path: '/tasks/$taskId/apply'
+      fullPath: '/tasks/$taskId/apply'
+      preLoaderRoute: typeof TasksTaskIdApplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ClientRoute: ClientRoute,
   LoginRoute: LoginRoute,
+  ProfileRoute: ProfileRoute,
+  ReportRoute: ReportRoute,
   SignupRoute: SignupRoute,
+  SupportRoute: SupportRoute,
   TasksTaskIdRoute: TasksTaskIdRoute,
   TasksNewRoute: TasksNewRoute,
   TasksIndexRoute: TasksIndexRoute,
+  TasksTaskIdApplicantsRoute: TasksTaskIdApplicantsRoute,
+  TasksTaskIdApplyRoute: TasksTaskIdApplyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

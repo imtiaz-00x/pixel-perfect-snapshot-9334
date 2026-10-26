@@ -6,7 +6,7 @@ import { AppShell, SignInPrompt } from "@/components/app-shell";
 import { useStore } from "@/lib/store";
 import { formatBudget, formatDate } from "@/lib/types";
 
-export const Route = createFileRoute("/tasks/$taskId/apply")({
+export const Route = createFileRoute("/tasks/$taskId_/apply")({
   head: () => ({
     meta: [
       { title: "Apply for task · OpsPilot" },

@@ -6,7 +6,7 @@ import { EmptyState } from "@/components/empty-state";
 import { useStore } from "@/lib/store";
 import { formatBudget, formatDate, type Application, type TaskStatus } from "@/lib/types";
 
-export const Route = createFileRoute("/tasks/$taskId/applicants")({
+export const Route = createFileRoute("/tasks/$taskId_/applicants")({
   head: () => ({
     meta: [
       { title: "Review applicants · OpsPilot" },
