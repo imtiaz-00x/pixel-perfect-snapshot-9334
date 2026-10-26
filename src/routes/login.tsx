@@ -37,7 +37,7 @@ function LogIn() {
     setErrors(next);
     if (Object.keys(next).length) return;
 
-    const user = signIn({ email, password: "", role: role! });
+    const user = signIn({ email, role: role! });
     toast.success(`Signed in as ${user.name}`);
     navigate({ to: user.role === "client" ? "/client" : "/tasks" });
   }

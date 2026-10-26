@@ -39,7 +39,7 @@ function SignUp() {
     setErrors(next);
     if (Object.keys(next).length) return;
 
-    const user = signUp({ name, email, password: "", role: role! });
+    const user = signUp({ name, email, role: role! });
     toast.success(`Welcome to OpsPilot, ${user.name}!`);
     navigate({ to: user.role === "client" ? "/client" : "/tasks" });
   }
