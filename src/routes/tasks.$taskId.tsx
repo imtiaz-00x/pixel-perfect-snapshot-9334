@@ -187,8 +187,4 @@ function TaskDetail() {
     </AppShell>
   );
 
-  function useStoreSafeUpdate(id: string, status: "in_progress" | "completed") {
-    // Small local helper: keeps the JSX above readable.
-    updateTaskStatusRef.current?.(id, status);
-  }
 }
