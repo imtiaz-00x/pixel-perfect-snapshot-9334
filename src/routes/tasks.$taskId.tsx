@@ -22,7 +22,7 @@ export const Route = createFileRoute("/tasks/$taskId")({
 
 function TaskDetail() {
   const { taskId } = Route.useParams();
-  const { tasks, applications, user } = useStore();
+  const { tasks, applications, user, updateTaskStatus } = useStore();
   const task = tasks.find((t) => t.id === taskId);
 
   if (!task) {
@@ -136,7 +136,7 @@ function TaskDetail() {
               </Link>
               {task.status === "assigned" ? (
                 <button
-                  onClick={() => useStoreSafeUpdate(task.id, "in_progress")}
+                  onClick={() => updateTaskStatus(task.id, "in_progress")}
                   className="rounded-xl border border-border px-4 py-2.5 text-sm font-medium transition-colors hover:bg-secondary"
                 >
                   Mark in progress
@@ -144,7 +144,7 @@ function TaskDetail() {
               ) : null}
               {task.status === "in_progress" ? (
                 <button
-                  onClick={() => useStoreSafeUpdate(task.id, "completed")}
+                  onClick={() => updateTaskStatus(task.id, "completed")}
                   className="rounded-xl border border-border px-4 py-2.5 text-sm font-medium transition-colors hover:bg-secondary"
                 >
                   Mark completed
